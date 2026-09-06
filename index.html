@@ -13,11 +13,14 @@
     <meta name="robots" content="index, follow" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://trollasinc.github.io/" />
+    <link rel="canonical" href="https://trollasincos.github.io/" />
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="img/trollasinc.png" />
     <link rel="apple-touch-icon" href="img/trollasinc.png" />
+
+    <!-- Web Manifest -->
+    <link rel="manifest" href="manifest.json" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -28,10 +31,10 @@
     <meta
       property="og:description"
       content="A free and open-source Android operating system based on LineageOS. Fast, private, customizable, and easy to maintain." />
-    <meta property="og:url" content="https://trollasinc.github.io/" />
+    <meta property="og:url" content="https://trollasincos.github.io/" />
     <meta
       property="og:image"
-      content="https://trollasinc.github.io/img/trollasinc.png" />
+      content="https://trollasincos.github.io/img/trollasinc.png" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
@@ -42,7 +45,27 @@
       content="A free and open-source Android operating system based on LineageOS." />
     <meta
       name="twitter:image"
-      content="https://trollasinc.github.io/img/trollasinc.png" />
+      content="https://trollasincos.github.io/img/trollasinc.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Trollas. Inc. OS",
+        "url": "https://trollasincos.github.io/",
+        "description": "A free and open-source Android operating system based on LineageOS. Fast, private, customizable, and easy to maintain.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trollas. Inc.",
+          "url": "https://trollasincos.github.io/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://trollasincos.github.io/img/trollasinc.png"
+          }
+        }
+      }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -850,7 +873,7 @@
         <img
           class="navbar-logo"
           src="img/trollasinc.png"
-          alt=""
+          alt="Trollas. Inc. OS logo"
           width="32"
           height="32" />
         <span>Trollas. Inc. OS</span>
@@ -892,7 +915,9 @@
           <img
             class="hero-logo"
             src="img/trollasinc.png"
-            alt="Trollas. Inc. logo" />
+            alt="Trollas. Inc. OS logo"
+            width="250"
+            height="250" />
           <h1 class="hero-title">Trollas. Inc. OS</h1>
         </div>
 
@@ -908,9 +933,9 @@
 
       <!-- WELCOME -->
       <section class="content-section welcome" id="welcome">
-        <h1 class="section-title animate-on-scroll">
+        <h2 class="section-title animate-on-scroll">
           Welcome to Trollas. Inc. OS
-        </h1>
+        </h2>
 
         <p class="section-description animate-on-scroll delay-1">
           A free and open-source Android operating system based on LineageOS,
@@ -920,15 +945,17 @@
         <img
           class="welcome-icon animate-on-scroll delay-2"
           src="img/smartphone.png"
-          alt="Smartphone illustration"
+          alt="Smartphone running Trollas. Inc. OS"
+          width="280"
+          height="280"
           loading="lazy" />
       </section>
 
       <!-- FEATURES -->
       <section class="content-section features" id="features">
-        <h1 class="section-title animate-on-scroll">
+        <h2 class="section-title animate-on-scroll">
           Every feature that matters.
-        </h1>
+        </h2>
 
         <p class="section-description animate-on-scroll delay-1">
           A clean Android experience built around the things you actually care
@@ -972,7 +999,7 @@
 
       <!-- DEVICES -->
       <section class="content-section devices" id="devices">
-        <h1 class="section-title animate-on-scroll">Supported Devices</h1>
+        <h2 class="section-title animate-on-scroll">Supported Devices</h2>
 
         <p class="section-description animate-on-scroll delay-1">
           Explore devices compatible with Trollas. Inc OS.
@@ -985,7 +1012,7 @@
 
       <!-- DOWNLOAD -->
       <section class="content-section download" id="download">
-        <h1 class="section-title animate-on-scroll">Download</h1>
+        <h2 class="section-title animate-on-scroll">Download</h2>
 
         <p class="section-description animate-on-scroll delay-1">
           Select your device to find its latest available build.

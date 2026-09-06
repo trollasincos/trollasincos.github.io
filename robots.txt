@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trollasincos.github.io/sitemap.xml

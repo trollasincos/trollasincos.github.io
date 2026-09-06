@@ -1,0 +1,16 @@
+{
+  "name": "Trollas. Inc. OS",
+  "short_name": "Trollas OS",
+  "description": "A free and open-source Android operating system based on LineageOS. Fast, private, customizable, and easy to maintain.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050608",
+  "theme_color": "#0062f4",
+  "icons": [
+    {
+      "src": "img/trollasinc.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
