@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Trollas. Inc. OS — A Free and Open-Source Android Experience</title>
+    <meta
+      name="description"
+      content="Trollas. Inc. OS is a free and open-source Android operating system based on LineageOS. Fast, private, customizable, and easy to maintain." />
+    <meta name="theme-color" content="#0062f4" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://trollasinc.github.io/" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="img/trollasinc.png" />
+    <link rel="apple-touch-icon" href="img/trollasinc.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Trollas. Inc. OS" />
+    <meta
+      property="og:title"
+      content="Trollas. Inc. OS — A Free and Open-Source Android Experience" />
+    <meta
+      property="og:description"
+      content="A free and open-source Android operating system based on LineageOS. Fast, private, customizable, and easy to maintain." />
+    <meta property="og:url" content="https://trollasinc.github.io/" />
+    <meta
+      property="og:image"
+      content="https://trollasinc.github.io/img/trollasinc.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Trollas. Inc. OS" />
+    <meta
+      name="twitter:description"
+      content="A free and open-source Android operating system based on LineageOS." />
+    <meta
+      name="twitter:image"
+      content="https://trollasinc.github.io/img/trollasinc.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      /* ============================================================
+         Design Tokens
+         ============================================================ */
+      :root {
+        --accent: #0062f4;
+        --accent-light: #4d91ff;
+
+        --text: #101114;
+        --muted: #686b73;
+
+        --surface: #ffffff;
+        --surface-alt: #f5f7fa;
+
+        --border: #e2e5ea;
+        --dark: #050608;
+
+        --radius: 28px;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+
+        --nav-height: 64px;
+      }
+
+      /* ============================================================
+         Base
+         ============================================================ */
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          "Google Sans Flex",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+        background: var(--surface);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      select {
+        font: inherit;
+      }
+
+      section {
+        width: 100%;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      code {
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.9em;
+        background: rgba(0, 98, 244, 0.08);
+        padding: 0.15em 0.4em;
+        border-radius: 6px;
+      }
+
+      /* ============================================================
+         Skip Link
+         ============================================================ */
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 16px;
+        z-index: 10000;
+        padding: 12px 24px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+        border-radius: 0 0 12px 12px;
+        transition: top 0.2s ease;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* ============================================================
+         Navbar
+         ============================================================ */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(20px, 5vw, 60px);
+        background: rgba(5, 6, 8, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        transition: background 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background: rgba(5, 6, 8, 0.96);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .navbar-logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+
+      .navbar-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar-links a {
+        padding: 8px 16px;
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .navbar-links a:hover,
+      .navbar-links a:focus {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .navbar-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-toggle svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+
+      /* ============================================================
+         Scroll Animations
+         ============================================================ */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .delay-1 {
+        transition-delay: 0.1s;
+      }
+      .delay-2 {
+        transition-delay: 0.2s;
+      }
+      .delay-3 {
+        transition-delay: 0.3s;
+      }
+      .delay-4 {
+        transition-delay: 0.4s;
+      }
+      .delay-5 {
+        transition-delay: 0.5s;
+      }
+
+      /* ============================================================
+         Hero
+         ============================================================ */
+      .hero {
+        min-height: 100svh;
+        padding: clamp(32px, 6vw, 80px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        background:
+          radial-gradient(
+            circle at 50% 35%,
+            rgba(0, 98, 244, 0.24),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 98, 244, 0.12),
+            transparent 28%
+          ),
+          var(--dark);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.08) 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
+        pointer-events: none;
+      }
+
+      .hero-brand,
+      .hero-container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(18px, 3vw, 36px);
+        max-width: 1200px;
+      }
+
+      .hero-logo {
+        width: clamp(110px, 18vw, 250px);
+        height: clamp(110px, 18vw, 250px);
+        object-fit: contain;
+        flex-shrink: 0;
+        animation: hero-logo-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      @keyframes hero-logo-in {
+        from {
+          opacity: 0;
+          transform: scale(0.8) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .hero-title {
+        margin: 0;
+        font-size: clamp(2.2rem, 6vw, 5.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+        text-wrap: balance;
+        animation: hero-title-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      }
+
+      @keyframes hero-title-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        margin-top: clamp(34px, 5vw, 55px);
+        animation: hero-buttons-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      }
+
+      @keyframes hero-buttons-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ============================================================
+         Buttons
+         ============================================================ */
+      .button {
+        min-width: 150px;
+        min-height: 50px;
+        padding: 12px 22px;
+        border: 2px solid var(--accent);
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 28px rgba(0, 98, 244, 0.25);
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #fff;
+        color: var(--accent);
+        box-shadow: 0 12px 34px rgba(0, 98, 244, 0.32);
+      }
+
+      .button:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .button.secondary {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.45);
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .button.secondary:hover {
+        background: #fff;
+        border-color: #fff;
+        color: #111;
+      }
+
+      .button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* ============================================================
+         General Sections
+         ============================================================ */
+      .content-section {
+        min-height: 100svh;
+        padding: clamp(70px, 10vw, 130px) clamp(20px, 6vw, 100px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .section-title {
+        margin: 0;
+        max-width: 1100px;
+        font-size: clamp(2.3rem, 5vw, 4.5rem);
+        line-height: 1;
+        letter-spacing: -0.045em;
+        text-wrap: balance;
+      }
+
+      .section-description {
+        max-width: 760px;
+        margin: 22px auto 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        line-height: 1.65;
+        text-wrap: balance;
+      }
+
+      /* ============================================================
+         Welcome
+         ============================================================ */
+      .welcome {
+        background: var(--surface);
+      }
+
+      .welcome-icon {
+        width: min(280px, 48vw);
+        height: min(280px, 48vw);
+        margin-top: clamp(35px, 6vw, 65px);
+        object-fit: contain;
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.12));
+      }
+
+      /* ============================================================
+         Features
+         ============================================================ */
+      .features {
+        background: var(--surface-alt);
+      }
+
+      .features-grid {
+        width: min(1100px, 100%);
+        margin-top: 55px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .feature-card {
+        padding: 28px 20px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: #fff;
+        text-align: left;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.035);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+
+      .feature-icon {
+        font-size: 1.8rem;
+      }
+
+      .feature-card h2 {
+        margin: 18px 0 8px;
+        font-size: 1.15rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      /* ============================================================
+         Devices
+         ============================================================ */
+      .devices {
+        background: #fff;
+      }
+
+      .devices-grid {
+        width: min(1100px, 100%);
+        margin-top: 55px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+        gap: 20px;
+        text-align: left;
+      }
+
+      .devices-card {
+        padding: 28px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease;
+      }
+
+      .devices-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .device-name {
+        margin: 0 0 20px;
+        font-size: 1.45rem;
+        letter-spacing: -0.02em;
+      }
+
+      .device-info {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .device-info p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .device-info strong {
+        color: var(--text);
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(0, 98, 244, 0.09);
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      /* ============================================================
+         Download
+         ============================================================ */
+      .download {
+        background: var(--dark);
+        color: #fff;
+      }
+
+      .download .section-description {
+        color: #aeb3bd;
+      }
+
+      .download-box {
+        width: min(650px, 100%);
+        margin-top: 38px;
+        padding: clamp(22px, 4vw, 35px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+        backdrop-filter: blur(15px);
+      }
+
+      .download-select {
+        width: 100%;
+        min-height: 54px;
+        padding: 0 40px 0 16px;
+        border: 1px solid #444851;
+        border-radius: 16px;
+        outline: none;
+        background-color: #111318;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        color: #fff;
+        cursor: pointer;
+        appearance: none;
+      }
+
+      .download-select:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(0, 98, 244, 0.2);
+      }
+
+      #download-button {
+        width: 100%;
+        margin-top: 14px;
+      }
+
+      /* ============================================================
+         States
+         ============================================================ */
+      .empty-state,
+      .error-state {
+        width: min(650px, 100%);
+        padding: 25px;
+        border-radius: var(--radius);
+        background: var(--surface-alt);
+        color: var(--muted);
+      }
+
+      .error-state {
+        color: #b3261e;
+        background: #fff1f0;
+      }
+
+      /* ============================================================
+         Footer
+         ============================================================ */
+      footer {
+        padding: 60px clamp(20px, 6vw, 100px) 40px;
+        background: #030405;
+        color: #8f949e;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .footer-brand-section h3 {
+        margin: 0 0 12px;
+        color: #fff;
+        font-size: 1.15rem;
+      }
+
+      .footer-brand-section p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .footer-column h4 {
+        margin: 0 0 16px;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column a {
+        color: #8f949e;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-column a:hover {
+        color: #fff;
+      }
+
+      .footer-bottom {
+        margin: 40px auto 0;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        max-width: 1100px;
+        text-align: center;
+        font-size: 0.85rem;
+      }
+
+      .footer-bottom .footer-brand {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      /* ============================================================
+         Responsive — Tablet
+         ============================================================ */
+      @media (max-width: 900px) {
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ============================================================
+         Responsive — Mobile
+         ============================================================ */
+      @media (max-width: 620px) {
+        .navbar-links {
+          position: fixed;
+          top: var(--nav-height);
+          left: 0;
+          right: 0;
+          bottom: 0;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 4px;
+          padding: 20px;
+          background: rgba(5, 6, 8, 0.97);
+          backdrop-filter: blur(20px);
+          transform: translateX(100%);
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          overflow-y: auto;
+        }
+
+        .navbar-links.open {
+          transform: translateX(0);
+        }
+
+        .navbar-links a {
+          width: 100%;
+          padding: 14px 16px;
+          font-size: 1.05rem;
+          border-radius: 12px;
+        }
+
+        .navbar-toggle {
+          display: block;
+        }
+
+        .hero {
+          padding-top: calc(var(--nav-height) + 32px);
+        }
+
+        .hero-brand {
+          flex-direction: column;
+        }
+
+        .hero-container {
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .hero-container .button {
+          width: 100%;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          margin-top: 35px;
+        }
+
+        .feature-card {
+          text-align: center;
+        }
+
+        .content-section {
+          min-height: auto;
+          padding-top: 90px;
+          padding-bottom: 90px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .footer-brand-section {
+          text-align: center;
+        }
+      }
+
+      /* ============================================================
+         Reduced Motion
+         ============================================================ */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+        }
+
+        .animate-on-scroll {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#home" class="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#home" class="navbar-brand" aria-label="Trollas. Inc. OS — Home">
+        <img
+          class="navbar-logo"
+          src="img/trollasinc.png"
+          alt=""
+          width="32"
+          height="32" />
+        <span>Trollas. Inc. OS</span>
+      </a>
+
+      <ul class="navbar-links" id="navbar-links">
+        <li><a href="#welcome">Welcome</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#devices">Devices</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+
+      <button
+        class="navbar-toggle"
+        id="navbar-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="navbar-links">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="hero-brand">
+          <img
+            class="hero-logo"
+            src="img/trollasinc.png"
+            alt="Trollas. Inc. logo" />
+          <h1 class="hero-title">Trollas. Inc. OS</h1>
+        </div>
+
+        <div class="hero-container">
+          <a href="#welcome">
+            <button class="button" type="button">Get Started</button>
+          </a>
+          <a href="#download">
+            <button class="button secondary" type="button">Download Now</button>
+          </a>
+        </div>
+      </section>
+
+      <!-- WELCOME -->
+      <section class="content-section welcome" id="welcome">
+        <h1 class="section-title animate-on-scroll">
+          Welcome to Trollas. Inc. OS
+        </h1>
+
+        <p class="section-description animate-on-scroll delay-1">
+          A free and open-source Android operating system based on LineageOS,
+          engineered to be fast, private, customizable, and easy to maintain.
+        </p>
+
+        <img
+          class="welcome-icon animate-on-scroll delay-2"
+          src="img/smartphone.png"
+          alt="Smartphone illustration"
+          loading="lazy" />
+      </section>
+
+      <!-- FEATURES -->
+      <section class="content-section features" id="features">
+        <h1 class="section-title animate-on-scroll">
+          Every feature that matters.
+        </h1>
+
+        <p class="section-description animate-on-scroll delay-1">
+          A clean Android experience built around the things you actually care
+          about.
+        </p>
+
+        <div class="features-grid">
+          <article class="feature-card animate-on-scroll delay-1">
+            <span class="feature-icon" aria-hidden="true">⚡</span>
+            <h2>Performance</h2>
+            <p>Smooth, fluid, and optimized for every supported device.</p>
+          </article>
+
+          <article class="feature-card animate-on-scroll delay-2">
+            <span class="feature-icon" aria-hidden="true">🔒</span>
+            <h2>Privacy</h2>
+            <p>Your device and your data stay firmly under your control.</p>
+          </article>
+
+          <article class="feature-card animate-on-scroll delay-3">
+            <span class="feature-icon" aria-hidden="true">🎨</span>
+            <h2>Customization</h2>
+            <p>Make Android truly yours with deep, flexible theming.</p>
+          </article>
+
+          <article class="feature-card animate-on-scroll delay-4">
+            <span class="feature-icon" aria-hidden="true">🛠️</span>
+            <h2>Open Source</h2>
+            <p>The entire source code is transparent and freely available.</p>
+          </article>
+
+          <article class="feature-card animate-on-scroll delay-5">
+            <span class="feature-icon" aria-hidden="true">🔄</span>
+            <h2>OTA Updates</h2>
+            <p>
+              Keep your device secure and up to date with effortless updates.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- DEVICES -->
+      <section class="content-section devices" id="devices">
+        <h1 class="section-title animate-on-scroll">Supported Devices</h1>
+
+        <p class="section-description animate-on-scroll delay-1">
+          Explore devices compatible with Trollas. Inc OS.
+        </p>
+
+        <div class="devices-grid" id="devices-grid">
+          <div class="empty-state">Loading devices…</div>
+        </div>
+      </section>
+
+      <!-- DOWNLOAD -->
+      <section class="content-section download" id="download">
+        <h1 class="section-title animate-on-scroll">Download</h1>
+
+        <p class="section-description animate-on-scroll delay-1">
+          Select your device to find its latest available build.
+        </p>
+
+        <div class="download-box animate-on-scroll delay-2">
+          <select
+            class="download-select"
+            id="device-select"
+            aria-label="Select device">
+            <option value="">Loading devices…</option>
+          </select>
+
+          <button class="button" id="download-button" type="button" disabled>
+            Select a device
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand-section">
+          <h3>Trollas. Inc. OS</h3>
+          <p>
+            A free and open-source Android operating system based on LineageOS.
+            Built by the community, for everyone.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#devices">Devices</a></li>
+            <li><a href="#download">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Community</h4>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/trollasincos"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/trollasincos"
+                target="_blank"
+                rel="noopener noreferrer">
+                Source Code
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#welcome">About</a></li>
+            <li><a href="#download">Get Started</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2024–2026
+          <span class="footer-brand">Trollas. Inc.</span>
+          · Trollas. Inc. OS
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      "use strict";
+
+      /* ============================================================
+         Element references
+         ============================================================ */
+      const devicesGrid = document.getElementById("devices-grid");
+      const deviceSelect = document.getElementById("device-select");
+      const downloadButton = document.getElementById("download-button");
+
+      let devices = [];
+
+      /* ============================================================
+         Device helpers
+         ============================================================ */
+      const DEVICE_KEY_GROUPS = [
+        ["name", "device", "model"],
+        ["model", "modelNumber"],
+        ["codename", "codeName"],
+        ["status"],
+        ["download", "downloadUrl", "url"],
+      ];
+
+      /**
+       * Returns the first non-empty value found in the given key groups.
+       * @param {object} device - A device object from devices.json.
+       * @param {string[]} keys - Candidate property names, in priority order.
+       * @param {string} fallback - Value returned when no key is present.
+       */
+      function getValue(device, keys, fallback = "Not specified") {
+        for (const key of keys) {
+          const value = device[key];
+          if (value !== undefined && value !== null && value !== "") {
+            return value;
+          }
+        }
+        return fallback;
+      }
+
+      /* ============================================================
+         Rendering
+         ============================================================ */
+      function renderDevices() {
+        if (!devices.length) {
+          showEmptyState();
+          return;
+        }
+
+        devicesGrid.innerHTML = "";
+        deviceSelect.innerHTML = '<option value="">Select a device…</option>';
+
+        devices.forEach((device, index) => {
+          const name = getValue(device, DEVICE_KEY_GROUPS[0], "Unknown device");
+          const model = getValue(device, DEVICE_KEY_GROUPS[1]);
+          const codename = getValue(device, DEVICE_KEY_GROUPS[2]);
+          const status = getValue(device, DEVICE_KEY_GROUPS[3], "Unknown");
+          const download = getValue(device, DEVICE_KEY_GROUPS[4], "");
+
+          /* Device card */
+          const card = document.createElement("article");
+          card.className = "devices-card animate-on-scroll";
+          if (codename !== "Not specified") {
+            card.id = codename.toLowerCase();
+          }
+
+          card.innerHTML = `
+            <h2 class="device-name"></h2>
+            <div class="device-info">
+              <p><strong>Model:</strong> <span class="model"></span></p>
+              <p><strong>Codename:</strong> <span class="codename"></span></p>
+              <span class="status"></span>
+            </div>
+            <a class="device-download" href="#download">
+              <button class="button" type="button">Download</button>
+            </a>
+          `;
+
+          card.querySelector(".device-name").textContent = name;
+          card.querySelector(".model").textContent = model;
+          card.querySelector(".codename").textContent = codename;
+          card.querySelector(".status").textContent = status;
+
+          card
+            .querySelector(".device-download")
+            .addEventListener("click", () => {
+              deviceSelect.value = String(index);
+              updateDownloadButton();
+            });
+
+          devicesGrid.appendChild(card);
+
+          /* Device option */
+          const option = document.createElement("option");
+          option.value = String(index);
+          option.textContent =
+            codename !== "Not specified" ? `${name} (${codename})` : name;
+          deviceSelect.appendChild(option);
+
+          device._resolvedDownload = download;
+        });
+
+        updateDownloadButton();
+        observeElements();
+      }
+
+      function showEmptyState() {
+        devicesGrid.innerHTML =
+          '<div class="empty-state">No devices are currently available.</div>';
+        deviceSelect.innerHTML =
+          '<option value="">No devices available</option>';
+        downloadButton.disabled = true;
+        downloadButton.textContent = "Select a device";
+      }
+
+      function updateDownloadButton() {
+        const device = devices[Number(deviceSelect.value)];
+        const hasDownload = device && device._resolvedDownload;
+
+        downloadButton.disabled = !hasDownload;
+        downloadButton.textContent = hasDownload
+          ? "Download"
+          : "Select a device";
+      }
+
+      deviceSelect.addEventListener("change", updateDownloadButton);
+
+      downloadButton.addEventListener("click", () => {
+        const device = devices[Number(deviceSelect.value)];
+        if (device && device._resolvedDownload) {
+          window.location.href = device._resolvedDownload;
+        }
+      });
+
+      /* ============================================================
+         Data loading
+         ============================================================ */
+      async function loadDevices() {
+        try {
+          const response = await fetch("./devices.json", { cache: "no-cache" });
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          /* Accepts both an array and { devices: [...] } formats. */
+          devices = Array.isArray(data) ? data : data.devices;
+
+          if (!Array.isArray(devices)) {
+            throw new Error("Invalid devices.json format");
+          }
+
+          renderDevices();
+        } catch (error) {
+          console.error("Could not load devices.json:", error);
+
+          devicesGrid.innerHTML =
+            '<div class="error-state">' +
+            "Could not load devices.json. Check the file and its JSON format." +
+            "</div>";
+          deviceSelect.innerHTML =
+            '<option value="">Could not load devices</option>';
+          downloadButton.disabled = true;
+        }
+      }
+
+      /* ============================================================
+         Scroll-triggered animations
+         ============================================================ */
+      let ioObserver = null;
+
+      function observeElements() {
+        const elements = document.querySelectorAll(
+          ".animate-on-scroll:not(.visible)",
+        );
+        if (!elements.length) return;
+
+        if (!ioObserver || !("IntersectionObserver" in window)) {
+          if ("IntersectionObserver" in window) {
+            ioObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    ioObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+            );
+          } else {
+            elements.forEach((el) => el.classList.add("visible"));
+            return;
+          }
+        }
+
+        elements.forEach((el) => ioObserver.observe(el));
+      }
+
+      observeElements();
+
+      /* ============================================================
+         Navbar
+         ============================================================ */
+      const navbar = document.querySelector(".navbar");
+      const navbarToggle = document.getElementById("navbar-toggle");
+      const navbarLinks = document.getElementById("navbar-links");
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          navbar.classList.toggle("scrolled", window.scrollY > 50);
+        },
+        { passive: true },
+      );
+
+      navbarToggle.addEventListener("click", () => {
+        const isOpen = navbarLinks.classList.toggle("open");
+        navbarToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      navbarLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navbarLinks.classList.remove("open");
+          navbarToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      /* ============================================================
+         Init
+         ============================================================ */
+      loadDevices();
+    </script>
+  </body>
+</html>
