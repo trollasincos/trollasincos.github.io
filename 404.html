@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>404 — Page Not Found | Trollas. Inc. OS</title>
+    <meta name="robots" content="noindex" />
+
+    <link rel="icon" type="image/png" href="img/trollasinc.png" />
+    <link rel="apple-touch-icon" href="img/trollasinc.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      /* ============================================================
+         Design Tokens
+         ============================================================ */
+      :root {
+        --accent: #0062f4;
+        --accent-light: #4d91ff;
+
+        --text: #101114;
+        --muted: #686b73;
+
+        --surface: #ffffff;
+        --surface-alt: #f5f7fa;
+
+        --border: #e2e5ea;
+        --dark: #050608;
+
+        --radius: 28px;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+
+        --nav-height: 64px;
+      }
+
+      /* ============================================================
+         Base
+         ============================================================ */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Google Sans Flex",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+        background: var(--surface);
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      /* ============================================================
+         Navbar
+         ============================================================ */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(20px, 5vw, 60px);
+        background: rgba(5, 6, 8, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .navbar-logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+
+      .navbar-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+      }
+
+      .navbar-links a {
+        padding: 8px 16px;
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .navbar-links a:hover,
+      .navbar-links a:focus {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .navbar-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-toggle svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+
+      /* ============================================================
+         Error Section
+         ============================================================ */
+      .error-section {
+        flex: 1;
+        min-height: 100vh;
+        padding: clamp(32px, 6vw, 80px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        background:
+          radial-gradient(
+            circle at 50% 35%,
+            rgba(0, 98, 244, 0.24),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 98, 244, 0.12),
+            transparent 28%
+          ),
+          var(--dark);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .error-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.08) 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
+        pointer-events: none;
+      }
+
+      .error-content {
+        position: relative;
+        z-index: 1;
+        animation: error-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      @keyframes error-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .error-code {
+        font-size: clamp(6rem, 20vw, 14rem);
+        font-weight: 700;
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .error-message {
+        font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 400;
+        margin-bottom: clamp(30px, 5vw, 50px);
+      }
+
+      .error-actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* ============================================================
+         Buttons
+         ============================================================ */
+      .button {
+        min-width: 150px;
+        min-height: 50px;
+        padding: 12px 22px;
+        border: 2px solid var(--accent);
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 28px rgba(0, 98, 244, 0.25);
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #fff;
+        color: var(--accent);
+        box-shadow: 0 12px 34px rgba(0, 98, 244, 0.32);
+      }
+
+      .button:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .button.secondary {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.45);
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .button.secondary:hover {
+        background: #fff;
+        border-color: #fff;
+        color: #111;
+      }
+
+      /* ============================================================
+         Footer
+         ============================================================ */
+      footer {
+        padding: 60px clamp(20px, 6vw, 100px) 40px;
+        background: #030405;
+        color: #8f949e;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .footer-brand-section h3 {
+        margin: 0 0 12px;
+        color: #fff;
+        font-size: 1.15rem;
+      }
+
+      .footer-brand-section p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .footer-column h4 {
+        margin: 0 0 16px;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column a {
+        color: #8f949e;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-column a:hover {
+        color: #fff;
+      }
+
+      .footer-bottom {
+        margin: 40px auto 0;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        max-width: 1100px;
+        text-align: center;
+        font-size: 0.85rem;
+      }
+
+      .footer-bottom .footer-brand {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      /* ============================================================
+         Responsive — Tablet
+         ============================================================ */
+      @media (max-width: 900px) {
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ============================================================
+         Responsive — Mobile
+         ============================================================ */
+      @media (max-width: 620px) {
+        .navbar-links {
+          position: fixed;
+          top: var(--nav-height);
+          left: 0;
+          right: 0;
+          bottom: 0;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 4px;
+          padding: 20px;
+          background: rgba(5, 6, 8, 0.97);
+          backdrop-filter: blur(20px);
+          transform: translateX(100%);
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          overflow-y: auto;
+        }
+
+        .navbar-links.open {
+          transform: translateX(0);
+        }
+
+        .navbar-links a {
+          width: 100%;
+          padding: 14px 16px;
+          font-size: 1.05rem;
+          border-radius: 12px;
+        }
+
+        .navbar-toggle {
+          display: block;
+        }
+
+        .error-section {
+          padding-top: calc(var(--nav-height) + 40px);
+        }
+
+        .error-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .error-actions .button {
+          width: 100%;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .footer-brand-section {
+          text-align: center;
+        }
+      }
+
+      /* ============================================================
+         Reduced Motion
+         ============================================================ */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+        }
+
+        .error-content {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="navbar-brand" aria-label="Trollas. Inc. OS — Home">
+        <img
+          class="navbar-logo"
+          src="img/trollasinc.png"
+          alt="Trollas. Inc. OS logo"
+          width="32"
+          height="32" />
+        <span>Trollas. Inc. OS</span>
+      </a>
+
+      <ul class="navbar-links" id="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#devices">Devices</a></li>
+        <li><a href="index.html#download">Download</a></li>
+      </ul>
+
+      <button
+        class="navbar-toggle"
+        id="navbar-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="navbar-links">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- ERROR -->
+    <main class="error-section">
+      <div class="error-content">
+        <div class="error-code">404</div>
+        <p class="error-message">The URL does not exist.</p>
+        <div class="error-actions">
+          <a href="index.html">
+            <button class="button" type="button">Go to Homepage</button>
+          </a>
+          <a href="javascript:history.back()">
+            <button class="button secondary" type="button">Go Back</button>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand-section">
+          <h3>Trollas. Inc. OS</h3>
+          <p>
+            A free and open-source Android operating system based on LineageOS.
+            Built by the community, for everyone.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#devices">Devices</a></li>
+            <li><a href="index.html#download">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Community</h4>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/trollasincos"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/trollasincos"
+                target="_blank"
+                rel="noopener noreferrer">
+                Source Code
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="index.html#welcome">About</a></li>
+            <li><a href="index.html#download">Get Started</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2024–2026
+          <span class="footer-brand">Trollas. Inc.</span>
+          · Trollas. Inc. OS
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      "use strict";
+
+      /* Navbar */
+      const navbarToggle = document.getElementById("navbar-toggle");
+      const navbarLinks = document.getElementById("navbar-links");
+
+      navbarToggle.addEventListener("click", () => {
+        const isOpen = navbarLinks.classList.toggle("open");
+        navbarToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      navbarLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navbarLinks.classList.remove("open");
+          navbarToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    </script>
+  </body>
+</html>
