@@ -133,6 +133,13 @@
         font: inherit;
       }
 
+      a:focus-visible,
+      button:focus-visible,
+      select:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
       section {
         width: 100%;
       }
@@ -406,6 +413,9 @@
          Buttons
          ============================================================ */
       .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         min-width: 150px;
         min-height: 50px;
         padding: 12px 22px;
@@ -575,6 +585,13 @@
 
       .devices-card:hover {
         transform: translateY(-4px);
+      }
+
+      .devices-grid .empty-state,
+      .devices-grid .error-state {
+        grid-column: 1 / -1;
+        width: auto;
+        text-align: center;
       }
 
       .device-name {
@@ -884,6 +901,8 @@
         <li><a href="#features">Features</a></li>
         <li><a href="#devices">Devices</a></li>
         <li><a href="#download">Download</a></li>
+        <li><a href="guides/">Guides</a></li>
+        <li><a href="blog/">Blog</a></li>
       </ul>
 
       <button
@@ -922,12 +941,8 @@
         </div>
 
         <div class="hero-container">
-          <a href="#welcome">
-            <button class="button" type="button">Get Started</button>
-          </a>
-          <a href="#download">
-            <button class="button secondary" type="button">Download Now</button>
-          </a>
+          <a href="#welcome" class="button">Get Started</a>
+          <a href="#download" class="button secondary">Download Now</a>
         </div>
       </section>
 
@@ -1080,6 +1095,7 @@
           <ul>
             <li><a href="#welcome">About</a></li>
             <li><a href="#download">Get Started</a></li>
+            <li><a href="blog/">Blog</a></li>
           </ul>
         </div>
       </div>
@@ -1165,9 +1181,7 @@
               <p><strong>Codename:</strong> <span class="codename"></span></p>
               <span class="status"></span>
             </div>
-            <a class="device-download" href="#download">
-              <button class="button" type="button">Download</button>
-            </a>
+            <a class="device-download button" href="#download">Download</a>
           `;
 
           card.querySelector(".device-name").textContent = name;

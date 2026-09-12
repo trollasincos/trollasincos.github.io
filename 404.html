@@ -7,8 +7,8 @@
     <title>404 — Page Not Found | Trollas. Inc. OS</title>
     <meta name="robots" content="noindex" />
 
-    <link rel="icon" type="image/png" href="img/trollasinc.png" />
-    <link rel="apple-touch-icon" href="img/trollasinc.png" />
+    <link rel="icon" type="image/png" href="/img/trollasinc.png" />
+    <link rel="apple-touch-icon" href="/img/trollasinc.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,6 +71,12 @@
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
       }
 
       button {
@@ -250,6 +256,9 @@
          Buttons
          ============================================================ */
       .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         min-width: 150px;
         min-height: 50px;
         padding: 12px 22px;
@@ -459,10 +468,10 @@
   <body>
     <!-- NAVBAR -->
     <nav class="navbar" aria-label="Main navigation">
-      <a href="index.html" class="navbar-brand" aria-label="Trollas. Inc. OS — Home">
+      <a href="/" class="navbar-brand" aria-label="Trollas. Inc. OS — Home">
         <img
           class="navbar-logo"
-          src="img/trollasinc.png"
+          src="/img/trollasinc.png"
           alt="Trollas. Inc. OS logo"
           width="32"
           height="32" />
@@ -470,10 +479,12 @@
       </a>
 
       <ul class="navbar-links" id="navbar-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#features">Features</a></li>
-        <li><a href="index.html#devices">Devices</a></li>
-        <li><a href="index.html#download">Download</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#devices">Devices</a></li>
+        <li><a href="/#download">Download</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/blog/">Blog</a></li>
       </ul>
 
       <button
@@ -504,11 +515,9 @@
         <div class="error-code">404</div>
         <p class="error-message">The URL does not exist.</p>
         <div class="error-actions">
-          <a href="index.html">
-            <button class="button" type="button">Go to Homepage</button>
-          </a>
-          <a href="javascript:history.back()">
-            <button class="button secondary" type="button">Go Back</button>
+          <a class="button" href="/">Go to Homepage</a>
+          <a class="button secondary" href="javascript:history.back()">
+            Go Back
           </a>
         </div>
       </div>
@@ -528,9 +537,9 @@
         <div class="footer-column">
           <h4>Project</h4>
           <ul>
-            <li><a href="index.html#features">Features</a></li>
-            <li><a href="index.html#devices">Devices</a></li>
-            <li><a href="index.html#download">Download</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#devices">Devices</a></li>
+            <li><a href="/#download">Download</a></li>
           </ul>
         </div>
 
@@ -559,8 +568,9 @@
         <div class="footer-column">
           <h4>Resources</h4>
           <ul>
-            <li><a href="index.html#welcome">About</a></li>
-            <li><a href="index.html#download">Get Started</a></li>
+            <li><a href="/#welcome">About</a></li>
+            <li><a href="/#download">Get Started</a></li>
+            <li><a href="/blog/">Blog</a></li>
           </ul>
         </div>
       </div>

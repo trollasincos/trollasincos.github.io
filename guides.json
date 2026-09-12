@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Getting Started",
+    "description": "A beginner-friendly introduction to Trollas. Inc. OS — what it is, how to check your device, and exactly where to go next.",
+    "icon": "🚀",
+    "difficulty": "Beginner",
+    "time": "~10 min",
+    "devices": "All devices",
+    "status": "Published",
+    "url": "guides/getting-started/"
+  },
+  {
+    "title": "Installation Guide",
+    "description": "Install Trollas. Inc. OS on your supported device — from preparing your device and unlocking the bootloader to flashing the ROM and troubleshooting common issues.",
+    "icon": "⚡",
+    "difficulty": "Intermediate",
+    "time": "~40 min",
+    "devices": "All devices",
+    "status": "Published",
+    "url": "guides/install/"
+  }
+]
