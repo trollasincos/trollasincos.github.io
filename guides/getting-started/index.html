@@ -1,0 +1,1999 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Getting Started — Trollas. Inc. OS</title>
+    <meta
+      name="description"
+      content="A beginner-friendly introduction to Trollas. Inc. OS — what it is, how to check your device, and where to go next." />
+    <meta name="theme-color" content="#0062f4" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://trollasincos.github.io/guides/getting-started/" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="../../img/trollasinc.png" />
+    <link rel="apple-touch-icon" href="../../img/trollasinc.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Trollas. Inc. OS" />
+    <meta property="og:title" content="Getting Started — Trollas. Inc. OS" />
+    <meta
+      property="og:description"
+      content="A beginner-friendly introduction to Trollas. Inc. OS — what it is, how to check your device, and where to go next." />
+    <meta
+      property="og:url"
+      content="https://trollasincos.github.io/guides/getting-started/" />
+    <meta
+      property="og:image"
+      content="https://trollasincos.github.io/img/trollasinc.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Getting Started — Trollas. Inc. OS" />
+    <meta
+      name="twitter:description"
+      content="A beginner-friendly introduction to Trollas. Inc. OS — what it is, how to check your device, and where to go next." />
+    <meta
+      name="twitter:image"
+      content="https://trollasincos.github.io/img/trollasinc.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://trollasincos.github.io/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Guides",
+              "item": "https://trollasincos.github.io/guides/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Getting Started",
+              "item": "https://trollasincos.github.io/guides/getting-started/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "Getting Started with Trollas. Inc. OS",
+          "description": "A beginner-friendly introduction to Trollas. Inc. OS — check your device, gather what you need, and follow the installation guide.",
+          "totalTime": "PT10M",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "What is Trollas. Inc. OS",
+              "text": "An overview of the project: open source, privacy-focused, customizable, and built by the community."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Check your device support",
+              "text": "Visit the Supported Devices section and note your device's codename."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Gather the essentials",
+              "text": "Collect your supported device, a computer, a data USB cable, and enough battery."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 4,
+              "name": "Back up your data",
+              "text": "Back up everything important before installing a custom operating system."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 5,
+              "name": "Follow the Installation Guide",
+              "text": "Open the full Installation Guide, which walks through every step from preparation to first boot."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 6,
+              "name": "After you're up and running",
+              "text": "Learn about OTA updates, customization, backups, and how to get help."
+            }
+          ]
+        }
+      ]
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      /* ============================================================
+         Design Tokens (mirrors main index.html)
+         ============================================================ */
+      :root {
+        --accent: #0062f4;
+        --accent-light: #4d91ff;
+
+        --text: #101114;
+        --muted: #686b73;
+
+        --surface: #ffffff;
+        --surface-alt: #f5f7fa;
+
+        --border: #e2e5ea;
+        --dark: #050608;
+
+        --radius: 28px;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+
+        --nav-height: 64px;
+      }
+
+      /* ============================================================
+         Base
+         ============================================================ */
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          "Google Sans Flex",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+        background: var(--surface);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      select {
+        font: inherit;
+      }
+
+      section {
+        width: 100%;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      /* ============================================================
+         Skip Link
+         ============================================================ */
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 16px;
+        z-index: 10000;
+        padding: 12px 24px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+        border-radius: 0 0 12px 12px;
+        transition: top 0.2s ease;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* ============================================================
+         Navbar
+         ============================================================ */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(20px, 5vw, 60px);
+        background: rgba(5, 6, 8, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        transition: background 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background: rgba(5, 6, 8, 0.96);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .navbar-logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+
+      .navbar-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar-links a {
+        padding: 8px 16px;
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .navbar-links a:hover,
+      .navbar-links a:focus {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-links a.active {
+        color: #fff;
+        background: rgba(0, 98, 244, 0.55);
+      }
+
+      .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .navbar-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-toggle svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+
+      /* ============================================================
+         Scroll Animations
+         ============================================================ */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .delay-1 {
+        transition-delay: 0.1s;
+      }
+      .delay-2 {
+        transition-delay: 0.2s;
+      }
+      .delay-3 {
+        transition-delay: 0.3s;
+      }
+
+      /* ============================================================
+         Guide Hero
+         ============================================================ */
+      .guide-hero {
+        position: relative;
+        padding:
+          calc(var(--nav-height) + clamp(44px, 8vw, 88px))
+          clamp(20px, 6vw, 100px)
+          clamp(48px, 8vw, 92px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        background:
+          radial-gradient(
+            circle at 50% 45%,
+            rgba(0, 98, 244, 0.22),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 85% 85%,
+            rgba(0, 98, 244, 0.1),
+            transparent 26%
+          ),
+          var(--dark);
+        overflow: hidden;
+      }
+
+      .guide-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.08) 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+        mask-image: linear-gradient(to bottom, black, transparent 80%);
+        pointer-events: none;
+      }
+
+      .guide-hero .hero-content {
+        position: relative;
+        z-index: 1;
+        width: min(780px, 100%);
+      }
+
+      .breadcrumb {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        padding: 8px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+
+      .breadcrumb a {
+        color: rgba(255, 255, 255, 0.72);
+        transition: color 0.2s ease;
+      }
+
+      .breadcrumb a:hover {
+        color: #fff;
+      }
+
+      .breadcrumb .breadcrumb-current {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .breadcrumb-sep {
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      .guide-hero h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 5.5vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+        text-wrap: balance;
+      }
+
+      .page-description {
+        max-width: 640px;
+        margin: 18px auto 0;
+        color: #aeb3bd;
+        font-size: clamp(1.02rem, 2vw, 1.2rem);
+        line-height: 1.65;
+        text-wrap: balance;
+      }
+
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        padding: 7px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 0.84rem;
+        font-weight: 600;
+      }
+
+      /* ============================================================
+         Buttons
+         ============================================================ */
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 150px;
+        min-height: 50px;
+        padding: 12px 22px;
+        border: 2px solid var(--accent);
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 28px rgba(0, 98, 244, 0.25);
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #fff;
+        color: var(--accent);
+        box-shadow: 0 12px 34px rgba(0, 98, 244, 0.32);
+      }
+
+      .button:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .button.ghost {
+        background: transparent;
+        border-color: var(--border);
+        color: var(--text);
+        box-shadow: none;
+      }
+
+      .button.ghost:hover {
+        transform: none;
+        background: var(--surface-alt);
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: none;
+      }
+
+      /* ============================================================
+         Guide Layout
+         ============================================================ */
+      .guide-layout {
+        width: min(1140px, 100%);
+        margin: 0 auto;
+        padding: clamp(28px, 4vw, 52px) clamp(20px, 5vw, 64px)
+          clamp(70px, 8vw, 120px);
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: clamp(28px, 4vw, 52px);
+        align-items: start;
+      }
+
+      /* TOC */
+      .toc {
+        position: sticky;
+        top: calc(var(--nav-height) + 24px);
+      }
+
+      .toc-title {
+        margin: 0 0 12px;
+        padding: 0 14px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+      }
+
+      .toc-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 2px;
+      }
+
+      .toc-list a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 14px;
+        border: 1px solid transparent;
+        border-radius: 14px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 500;
+        line-height: 1.35;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .toc-list a:hover {
+        color: var(--text);
+        background: var(--surface-alt);
+      }
+
+      .toc-list a.active {
+        color: var(--accent);
+        background: rgba(0, 98, 244, 0.08);
+        border-color: rgba(0, 98, 244, 0.22);
+        font-weight: 600;
+      }
+
+      .toc-num {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--surface-alt);
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--muted);
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .toc-list a.active .toc-num {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      /* Steps */
+      .guide-content {
+        min-width: 0;
+      }
+
+      .step {
+        scroll-margin-top: calc(var(--nav-height) + 28px);
+      }
+
+      .step + .step {
+        margin-top: 56px;
+        padding-top: 56px;
+        border-top: 1px solid var(--border);
+      }
+
+      .step-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .step-number {
+        flex-shrink: 0;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--accent);
+        color: #fff;
+        font-size: 1.35rem;
+        font-weight: 700;
+        box-shadow: 0 8px 24px rgba(0, 98, 244, 0.28);
+      }
+
+      .step-title {
+        margin: 0;
+        font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        text-wrap: balance;
+      }
+
+      .step-intro {
+        margin: 0 0 22px;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .step-body h3 {
+        margin: 28px 0 10px;
+        font-size: 1.18rem;
+        letter-spacing: -0.01em;
+      }
+
+      .step-body p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .step-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Lists */
+      .check-list,
+      .ordered-list {
+        margin: 14px 0 18px;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 11px;
+      }
+
+      .check-list li {
+        position: relative;
+        padding-left: 34px;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .check-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(0, 98, 244, 0.1);
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .ordered-list {
+        counter-reset: step;
+      }
+
+      .ordered-list li {
+        position: relative;
+        padding-left: 38px;
+        counter-increment: step;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .ordered-list li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 24px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      /* Callouts */
+      .callout {
+        display: flex;
+        gap: 14px;
+        margin: 22px 0;
+        padding: 18px 20px;
+        border: 1px solid;
+        border-radius: 18px;
+        text-align: left;
+      }
+
+      .callout-icon {
+        flex-shrink: 0;
+        font-size: 1.35rem;
+        line-height: 1.2;
+      }
+
+      .callout-body strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.98rem;
+      }
+
+      .callout-body p {
+        margin: 0;
+        font-size: 0.94rem;
+        line-height: 1.6;
+      }
+
+      .callout--info {
+        background: #eef4ff;
+        border-color: #cfe2ff;
+        color: #14439c;
+      }
+
+      .callout--info strong {
+        color: #0d3a9e;
+      }
+
+      .callout--warning {
+        background: #fff7e6;
+        border-color: #ffe2a6;
+        color: #7c5200;
+      }
+
+      .callout--warning strong {
+        color: #6e4700;
+      }
+
+      .callout--danger {
+        background: #fff1f0;
+        border-color: #ffd1cc;
+        color: #b3261e;
+      }
+
+      .callout--danger strong {
+        color: #9c1d16;
+      }
+
+      .callout--success {
+        background: #eafaf1;
+        border-color: #c6f0d9;
+        color: #0d6b3f;
+      }
+
+      .callout--success strong {
+        color: #0a5c37;
+      }
+
+      /* Code blocks */
+      .code-block {
+        margin: 14px 0 18px;
+        padding: 18px 20px;
+        border: 1px solid #1e222b;
+        border-radius: 16px;
+        background: #0b0d13;
+        overflow-x: auto;
+        text-align: left;
+      }
+
+      .code-block pre {
+        margin: 0;
+        white-space: pre;
+      }
+
+      .code-block code {
+        background: none;
+        padding: 0;
+        color: #d7dde8;
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .code-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 14px 0 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .copy-button {
+        flex-shrink: 0;
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          color 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .copy-button:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: rgba(0, 98, 244, 0.05);
+      }
+
+      /* Step navigation */
+      .step-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 44px;
+        padding-top: 28px;
+        border-top: 1px solid var(--border);
+      }
+
+      .step-nav-right {
+        margin-left: auto;
+      }
+
+      .step-nav .button {
+        min-width: 0;
+        min-height: 46px;
+        padding: 10px 20px;
+      }
+
+      /* Requirements cards */
+      .req-grid {
+        margin: 18px 0 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+        gap: 14px;
+      }
+
+      .req-card {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: #fff;
+        text-align: left;
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.035);
+      }
+
+      .req-card span {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .req-card p {
+        margin: 0;
+        color: var(--text);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      /* Troubleshooting accordion */
+      .trouble-item {
+        margin: 0 0 12px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .trouble-title {
+        list-style: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 20px;
+        border: none;
+        background: none;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+
+      .trouble-title::-webkit-details-marker {
+        display: none;
+      }
+
+      .trouble-title:hover {
+        background: var(--surface-alt);
+      }
+
+      .trouble-title .chevron {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        color: var(--muted);
+        transition: transform 0.25s ease;
+      }
+
+      .trouble-item[open] .chevron {
+        transform: rotate(180deg);
+      }
+
+      .trouble-body {
+        padding: 0 20px 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .trouble-body p {
+        margin: 0;
+      }
+
+      .trouble-body .check-list {
+        margin: 12px 0 0;
+      }
+
+      /* Closing card */
+      .end-card {
+        margin-top: 40px;
+        padding: 28px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface-alt);
+        text-align: center;
+      }
+
+      .end-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.2rem;
+      }
+
+      .end-card p {
+        margin: 0 auto;
+        max-width: 560px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .end-card .button {
+        margin-top: 22px;
+      }
+
+      /* ============================================================
+         Footer
+         ============================================================ */
+      footer {
+        padding: 60px clamp(20px, 6vw, 100px) 40px;
+        background: #030405;
+        color: #8f949e;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .footer-brand-section h3 {
+        margin: 0 0 12px;
+        color: #fff;
+        font-size: 1.15rem;
+      }
+
+      .footer-brand-section p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .footer-column h4 {
+        margin: 0 0 16px;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column a {
+        color: #8f949e;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-column a:hover {
+        color: #fff;
+      }
+
+      .footer-bottom {
+        margin: 40px auto 0;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        max-width: 1100px;
+        text-align: center;
+        font-size: 0.85rem;
+      }
+
+      .footer-bottom .footer-brand {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      /* ============================================================
+         Responsive — Tablet
+         ============================================================ */
+      @media (max-width: 900px) {
+        .guide-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .toc {
+          position: sticky;
+          top: var(--nav-height);
+          z-index: 50;
+          margin: 0 -20px;
+          padding: 8px 20px 14px;
+          background: var(--surface);
+          border-bottom: 1px solid var(--border);
+          overflow-x: auto;
+        }
+
+        .toc-title {
+          display: none;
+        }
+
+        .toc-list {
+          display: flex;
+          gap: 8px;
+          width: max-content;
+        }
+
+        .toc-list a {
+          white-space: nowrap;
+          padding: 8px 14px;
+          border-radius: 999px;
+          background: var(--surface-alt);
+          border: 1px solid var(--border);
+        }
+
+        .toc-list a.active {
+          background: var(--accent);
+          border-color: var(--accent);
+          color: #fff;
+          font-weight: 600;
+        }
+
+        .toc-list a.active .toc-num {
+          background: rgba(255, 255, 255, 0.2);
+          color: #fff;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ============================================================
+         Responsive — Mobile
+         ============================================================ */
+      @media (max-width: 620px) {
+        .navbar-links {
+          position: fixed;
+          top: var(--nav-height);
+          left: 0;
+          right: 0;
+          bottom: 0;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 4px;
+          padding: 20px;
+          background: rgba(5, 6, 8, 0.97);
+          backdrop-filter: blur(20px);
+          transform: translateX(100%);
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          overflow-y: auto;
+        }
+
+        .navbar-links.open {
+          transform: translateX(0);
+        }
+
+        .navbar-links a {
+          width: 100%;
+          padding: 14px 16px;
+          font-size: 1.05rem;
+          border-radius: 12px;
+        }
+
+        .navbar-toggle {
+          display: block;
+        }
+
+        .guide-hero {
+          padding-top: calc(var(--nav-height) + 48px);
+        }
+
+        .guide-layout {
+          padding-top: 16px;
+          padding-bottom: 70px;
+        }
+
+        .step + .step {
+          margin-top: 40px;
+          padding-top: 40px;
+        }
+
+        .step-head {
+          align-items: flex-start;
+        }
+
+        .step-nav {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .step-nav-right {
+          margin-left: 0;
+        }
+
+        .step-nav .button {
+          width: 100%;
+        }
+
+        .callout {
+          padding: 16px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .footer-brand-section {
+          text-align: center;
+        }
+      }
+
+      /* ============================================================
+         Reduced Motion
+         ============================================================ */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+        }
+
+        .animate-on-scroll {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="../../index.html" class="navbar-brand" aria-label="Trollas. Inc. OS — Home">
+        <img
+          class="navbar-logo"
+          src="../../img/trollasinc.png"
+          alt="Trollas. Inc. OS logo"
+          width="32"
+          height="32" />
+        <span>Trollas. Inc. OS</span>
+      </a>
+
+      <ul class="navbar-links" id="navbar-links">
+        <li><a href="../../index.html#welcome">Welcome</a></li>
+        <li><a href="../../index.html#features">Features</a></li>
+        <li><a href="../../index.html#devices">Devices</a></li>
+        <li><a href="../../index.html#download">Download</a></li>
+        <li>
+          <a href="../../guides/index.html" class="active" aria-current="page">
+            Guides
+          </a>
+        </li>
+        <li><a href="../../blog/">Blog</a></li>
+      </ul>
+
+      <button
+        class="navbar-toggle"
+        id="navbar-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="navbar-links">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+
+    <main id="main">
+      <!-- GUIDE HERO -->
+      <header class="guide-hero">
+        <div class="hero-content">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <a href="../../guides/index.html">Guides</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-current" aria-current="page">
+              Getting Started
+            </span>
+          </nav>
+
+          <h1>Getting Started</h1>
+
+          <p class="page-description">
+            A beginner-friendly introduction to the project — what it is, how
+            to check your device, and exactly where to go next.
+          </p>
+
+          <div class="hero-pills">
+            <span class="pill">🚀 Beginner</span>
+            <span class="pill">⏱ ~10 minutes</span>
+            <span class="pill">📱 All supported devices</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="guide-layout">
+        <!-- TABLE OF CONTENTS -->
+        <nav class="toc" aria-label="Table of contents">
+          <p class="toc-title">On this page</p>
+          <ul class="toc-list">
+            <li><a href="#step-1"><span class="toc-num">1</span>What is Trollas. Inc. OS</a></li>
+            <li><a href="#step-2"><span class="toc-num">2</span>Check your device</a></li>
+            <li><a href="#step-3"><span class="toc-num">3</span>Gather the essentials</a></li>
+            <li><a href="#step-4"><span class="toc-num">4</span>Back up your data</a></li>
+            <li><a href="#step-5"><span class="toc-num">5</span>Follow the Installation Guide</a></li>
+            <li><a href="#step-6"><span class="toc-num">6</span>After you're up and running</a></li>
+          </ul>
+        </nav>
+
+        <!-- GUIDE CONTENT -->
+        <div class="guide-content">
+          <!-- ============================================================
+               STEP 1 — What is Trollas. Inc. OS
+               ============================================================ -->
+          <section class="step" id="step-1" aria-labelledby="step-1-title">
+            <div class="step-head animate-on-scroll">
+              <span class="step-number" aria-hidden="true">1</span>
+              <h2 class="step-title" id="step-1-title">What is Trollas. Inc. OS</h2>
+            </div>
+
+            <p class="step-intro animate-on-scroll delay-1">
+              Trollas. Inc. OS is a free and open-source Android operating system
+              based on LineageOS. It is built by the community, for everyone —
+              designed to be fast, private, and fully customizable.
+            </p>
+
+            <ul class="check-list animate-on-scroll delay-1">
+              <li>
+                <strong>Open source</strong> — the entire codebase is transparent
+                and available for anyone to inspect, audit, or contribute to.
+              </li>
+              <li>
+                <strong>Privacy-first</strong> — your device and your data stay
+                firmly under your control, with no tracking or unnecessary data
+                collection.
+              </li>
+              <li>
+                <strong>Smooth and fast</strong> — carefully optimized for fluid
+                performance on every supported device, without unnecessary bloat.
+              </li>
+              <li>
+                <strong>Customizable</strong> — make Android truly yours with
+                deep theming, options, and a growing set of features.
+              </li>
+              <li>
+                <strong>OTA updates</strong> — receive security patches and new
+                features wirelessly, directly to your device.
+              </li>
+            </ul>
+
+            <div class="callout callout--success animate-on-scroll delay-2">
+              <span class="callout-icon" aria-hidden="true">✅</span>
+              <div class="callout-body">
+                <strong>It's completely free</strong>
+                <p>
+                  Trollas. Inc. OS will always be free to download and use. There
+                  are no accounts to create, no licenses to buy, and no strings
+                  attached.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               STEP 2 — Check your device
+               ============================================================ -->
+          <section class="step" id="step-2" aria-labelledby="step-2-title">
+            <div class="step-head animate-on-scroll">
+              <span class="step-number" aria-hidden="true">2</span>
+              <h2 class="step-title" id="step-2-title">Check your device support</h2>
+            </div>
+
+            <p class="step-intro animate-on-scroll delay-1">
+              Not every Android device can run Trollas. Inc. OS. Your first step
+              is to confirm that your phone is on the supported list — and to
+              find its <strong>codename</strong>, which you will need later.
+            </p>
+
+            <ul class="ordered-list animate-on-scroll delay-1">
+              <li>
+                Open the <a href="../../index.html#devices">Supported Devices</a>
+                section and look for your phone's marketing name (e.g. "Xiaomi
+                Redmi Note 8").
+              </li>
+              <li>
+                Note the <strong>codename</strong> shown in the device card (e.g.
+                "Ginkgo"). You will need this when downloading the correct ROM
+                build.
+              </li>
+              <li>
+                Check the <strong>status</strong> pill on the device card.
+                "Published" means builds are ready to download.
+              </li>
+            </ul>
+
+            <div class="callout callout--warning animate-on-scroll delay-1">
+              <span class="callout-icon" aria-hidden="true">⚠️</span>
+              <div class="callout-body">
+                <strong>Use the codename, not the marketing name</strong>
+                <p>
+                  Manufacturers use different names in different regions. The
+                  codename is the only reliable way to match a device to the
+                  correct ROM. Always double-check this before downloading.
+                </p>
+              </div>
+            </div>
+
+            <div class="callout callout--info animate-on-scroll delay-2">
+              <span class="callout-icon" aria-hidden="true">💡</span>
+              <div class="callout-body">
+                <strong>Device not listed?</strong>
+                <p>
+                  New devices are added regularly. If yours is not supported yet,
+                  watch the
+                  <a
+                    href="https://github.com/trollasincos"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    GitHub repository
+                  </a>
+                  for announcements, or join the community to request support.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               STEP 3 — Gather the essentials
+               ============================================================ -->
+          <section class="step" id="step-3" aria-labelledby="step-3-title">
+            <div class="step-head animate-on-scroll">
+              <span class="step-number" aria-hidden="true">3</span>
+              <h2 class="step-title" id="step-3-title">Gather the essentials</h2>
+            </div>
+
+            <p class="step-intro animate-on-scroll delay-1">
+              Before you start, get these things in order. Having everything
+              ready means the flashing process goes smoothly, start to finish.
+            </p>
+
+            <div class="req-grid animate-on-scroll delay-1">
+              <div class="req-card">
+                <span>Supported device</span>
+                <p>A device from the supported list, with at least 50% battery charge.</p>
+              </div>
+              <div class="req-card">
+                <span>Computer</span>
+                <p>Windows, macOS, or Linux with a working USB port.</p>
+              </div>
+              <div class="req-card">
+                <span>Data USB cable</span>
+                <p>A cable that can transfer data, not just charge.</p>
+              </div>
+              <div class="req-card">
+                <span>Platform tools</span>
+                <p>
+                  ADB and Fastboot installed. Download them from the
+                  <a
+                    href="https://developer.android.com/studio/releases/platform-tools"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    official site
+                  </a>.
+                </p>
+              </div>
+              <div class="req-card">
+                <span>ROM download</span>
+                <p>
+                  The Trollas. Inc. OS build matching your device's codename,
+                  from the <a href="../../index.html#download">Download section</a>.
+                </p>
+              </div>
+              <div class="req-card">
+                <span>Time and patience</span>
+                <p>
+                  The first installation takes about 30–40 minutes. Read through
+                  the full guide before you begin.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               STEP 4 — Back up your data
+               ============================================================ -->
+          <section class="step" id="step-4" aria-labelledby="step-4-title">
+            <div class="step-head animate-on-scroll">
+              <span class="step-number" aria-hidden="true">4</span>
+              <h2 class="step-title" id="step-4-title">Back up your data</h2>
+            </div>
+
+            <p class="step-intro animate-on-scroll delay-1">
+              Installing Trollas. Inc. OS involves unlocking the bootloader and
+              performing a factory reset — both of which <strong>wipe all data
+              on your device</strong>. A backup is essential.
+            </p>
+
+            <div class="callout callout--danger animate-on-scroll delay-1">
+              <span class="callout-icon" aria-hidden="true">⚠️</span>
+              <div class="callout-body">
+                <strong>Everything will be erased</strong>
+                <p>
+                  Photos, messages, apps, contacts, and settings stored on the
+                  device will be permanently removed during installation. Make
+                  sure you have a complete backup before you proceed.
+                </p>
+              </div>
+            </div>
+
+            <ul class="check-list animate-on-scroll delay-1">
+              <li>
+                <strong>Cloud backup</strong> — use your Google account or
+                another cloud service to back up photos, contacts, and
+                documents.
+              </li>
+              <li>
+                <strong>Local backup</strong> — copy important files to your
+                computer or an SD card using a USB cable.
+              </li>
+              <li>
+                <strong>Export app data</strong> — some apps have a built-in
+                backup/export feature. Use it before you wipe the device.
+              </li>
+              <li>
+                <strong>Verify ADB works</strong> — run the following command
+                to confirm your computer can communicate with the device.
+              </li>
+            </ul>
+
+            <div class="code-label">
+              <span>Verify your device is detected</span>
+              <button class="copy-button" type="button" data-copy="adb devices">Copy</button>
+            </div>
+            <div class="code-block animate-on-scroll delay-2">
+<pre><code>adb devices</code></pre>
+            </div>
+
+            <p class="animate-on-scroll delay-2">
+              You should see your device's serial number in the output. If the
+              list is empty, check that <strong>USB debugging</strong> is enabled
+              on the device and try a different USB cable or port.
+            </p>
+          </section>
+
+          <!-- ============================================================
+               STEP 5 — Follow the Installation Guide
+               ============================================================ -->
+          <section class="step" id="step-5" aria-labelledby="step-5-title">
+            <div class="step-head animate-on-scroll">
+              <span class="step-number" aria-hidden="true">5</span>
+              <h2 class="step-title" id="step-5-title">Follow the Installation Guide</h2>
+            </div>
+
+            <p class="step-intro animate-on-scroll delay-1">
+              With your data backed up and your essentials ready, it is time to
+              install. The
+              <a href="../../guides/install/">Installation Guide</a> walks
+              through every step in detail — from enabling Developer Options
+              and unlocking the bootloader to flashing the ROM and completing
+              first boot.
+            </p>
+
+            <ul class="check-list animate-on-scroll delay-1">
+              <li>
+                <strong>Read the full guide first</strong> — go through every
+                step before touching your device.
+              </li>
+              <li>
+                <strong>Keep it open</strong> — follow along step by step while
+                you work.
+              </li>
+              <li>
+                <strong>Don't rush</strong> — if something is unclear, stop
+                and ask for help rather than guessing.
+              </li>
+            </ul>
+
+            <a class="button animate-on-scroll delay-2" href="../../guides/install/">
+              Open the Installation Guide
+            </a>
+
+            <div class="callout callout--info animate-on-scroll delay-2">
+              <span class="callout-icon" aria-hidden="true">💡</span>
+              <div class="callout-body">
+                <strong>The Installation Guide covers everything</strong>
+                <p>
+                  Bootloader unlocking, downloading the right files, entering
+                  recovery, sideloading the ROM, and troubleshooting — all
+                  step by step with copy-paste commands.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               STEP 6 — After you're up and running
+               ============================================================ -->
+          <section class="step" id="step-6" aria-labelledby="step-6-title">
+            <div class="step-head animate-on-scroll">
+              <span class="step-number" aria-hidden="true">6</span>
+              <h2 class="step-title" id="step-6-title">After you're up and running</h2>
+            </div>
+
+            <p class="step-intro animate-on-scroll delay-1">
+              Your first boot is complete and Trollas. Inc. OS is running.
+              Here is what to do next to make the most of it.
+            </p>
+
+            <div class="step-body">
+              <h3>Check for updates</h3>
+              <p>
+                Connect to Wi-Fi and go to <strong>Settings → System → System
+                update</strong> to apply the latest OTA (over-the-air) build.
+                Updates are delivered automatically in the future.
+              </p>
+
+              <h3>Restore your data</h3>
+              <p>
+                Reinstall your apps from the Play Store or restore your local
+                backup. Contacts and calendar entries synced with Google will
+                appear automatically once you log in.
+              </p>
+
+              <h3>Explore customization</h3>
+              <p>
+                Trollas. Inc. OS gives you deep control over your device's look
+                and behavior. Head to <strong>Settings → Display</strong> to
+                start exploring themes, fonts, and accent colors.
+              </p>
+            </div>
+
+            <div class="callout callout--success animate-on-scroll delay-1">
+              <span class="callout-icon" aria-hidden="true">🎉</span>
+              <div class="callout-body">
+                <strong>Welcome to Trollas. Inc. OS</strong>
+                <p>
+                  Your device is now running a fast, private, and open-source
+                  Android experience. Enjoy it — and if you want to help
+                  improve it, contributions are always welcome.
+                </p>
+              </div>
+            </div>
+
+            <!-- TROUBLESHOOTING / COMMON QUESTIONS -->
+            <h3 class="animate-on-scroll">Common questions</h3>
+
+            <div class="trouble-item animate-on-scroll delay-1">
+              <details>
+                <summary class="trouble-title">
+                  Where do I report bugs or request features?
+                  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                </summary>
+                <div class="trouble-body">
+                  <p>
+                    Open an issue on the
+                    <a
+                      href="https://github.com/trollasincos"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      GitHub repository
+                    </a>.
+                    Include your device codename, the ROM version, and a clear
+                    description of the problem or suggestion.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div class="trouble-item animate-on-scroll delay-1">
+              <details>
+                <summary class="trouble-title">
+                  Can I go back to my stock ROM?
+                  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                </summary>
+                <div class="trouble-body">
+                  <p>
+                    Yes. You can flash the manufacturer's official firmware
+                    back onto your device using the same fastboot or recovery
+                    tools. Check your manufacturer's support pages for the
+                    stock firmware download and instructions.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div class="trouble-item animate-on-scroll delay-2">
+              <details>
+                <summary class="trouble-title">
+                  How do OTA updates work?
+                  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                </summary>
+                <div class="trouble-body">
+                  <p>
+                    When a new build is available, you will see a notification.
+                    You can also check manually under <strong>Settings → System
+                    → System update</strong>. OTA updates are incremental,
+                    safe, and keep your data intact.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div class="trouble-item animate-on-scroll delay-2">
+              <details>
+                <summary class="trouble-title">
+                  Will installing void my warranty?
+                  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                </summary>
+                <div class="trouble-body">
+                  <p>
+                    Unlocking the bootloader and installing a custom operating
+                    system typically voids the manufacturer's warranty. This is
+                    an inherent part of the process — proceed only if you are
+                    comfortable with that.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div class="end-card animate-on-scroll">
+              <h3>Ready to install?</h3>
+              <p>
+                With everything prepared, the Installation Guide will walk you
+                through the rest — step by step.
+              </p>
+              <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a class="button" href="../../guides/install/">Installation Guide →</a>
+                <a class="button ghost" href="../../guides/index.html">All guides</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP PREV/NEXT NAVIGATION -->
+          <nav class="step-nav" id="step-nav" aria-label="Step navigation">
+            <a class="button ghost" id="step-prev" href="#">← Previous</a>
+            <div class="step-nav-right">
+              <a class="button" id="step-next" href="#">Next step →</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand-section">
+          <h3>Trollas. Inc. OS</h3>
+          <p>
+            A free and open-source Android operating system based on LineageOS.
+            Built by the community, for everyone.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="../../index.html#features">Features</a></li>
+            <li><a href="../../index.html#devices">Devices</a></li>
+            <li><a href="../../index.html#download">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Community</h4>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/trollasincos"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/trollasincos"
+                target="_blank"
+                rel="noopener noreferrer">
+                Source Code
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="../../index.html#welcome">About</a></li>
+            <li><a href="../../guides/index.html">Guides</a></li>
+            <li><a href="../../guides/getting-started/index.html">Getting Started</a></li>
+            <li><a href="../../guides/install/index.html">Install Guide</a></li>
+            <li><a href="../../blog/">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2024–2026
+          <span class="footer-brand">Trollas. Inc.</span>
+          · Trollas. Inc. OS
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      "use strict";
+
+      /* ============================================================
+         Navbar
+         ============================================================ */
+      const navbar = document.querySelector(".navbar");
+      const navbarToggle = document.getElementById("navbar-toggle");
+      const navbarLinks = document.getElementById("navbar-links");
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          navbar.classList.toggle("scrolled", window.scrollY > 50);
+        },
+        { passive: true },
+      );
+
+      navbarToggle.addEventListener("click", () => {
+        const isOpen = navbarLinks.classList.toggle("open");
+        navbarToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      navbarLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navbarLinks.classList.remove("open");
+          navbarToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      /* ============================================================
+         Scroll-triggered animations
+         ============================================================ */
+      let ioObserver = null;
+
+      function observeElements() {
+        const elements = document.querySelectorAll(
+          ".animate-on-scroll:not(.visible)",
+        );
+        if (!elements.length) return;
+
+        if (!ioObserver || !("IntersectionObserver" in window)) {
+          if ("IntersectionObserver" in window) {
+            ioObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    ioObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+            );
+          } else {
+            elements.forEach((el) => el.classList.add("visible"));
+            return;
+          }
+        }
+
+        elements.forEach((el) => ioObserver.observe(el));
+      }
+
+      observeElements();
+
+      /* ============================================================
+         Table of contents — scrollspy
+         ============================================================ */
+      const steps = Array.from(document.querySelectorAll(".step"));
+      const tocLinks = Array.from(document.querySelectorAll(".toc-list a"));
+
+      function updateToc() {
+        const threshold = window.scrollY + Math.max(110, window.innerHeight * 0.2);
+        let current = steps[0];
+
+        steps.forEach((step) => {
+          if (step.getBoundingClientRect().top + window.scrollY <= threshold) {
+            current = step;
+          }
+        });
+
+        const activeHref = "#" + current.id;
+        tocLinks.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === activeHref);
+        });
+      }
+
+      window.addEventListener("scroll", updateToc, { passive: true });
+      updateToc();
+
+      tocLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          tocLinks.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+
+      /* ============================================================
+         Step prev/next navigation
+         ============================================================ */
+      const stepIds = steps.map((step) => step.id);
+
+      function setupStepNav() {
+        const prev = document.getElementById("step-prev");
+        const next = document.getElementById("step-next");
+
+        if (stepIds.length < 2) {
+          prev.style.display = "none";
+          next.style.display = "none";
+          return;
+        }
+
+        const update = () => {
+          const threshold = window.scrollY + 110;
+          let index = 0;
+          steps.forEach((step, i) => {
+            if (step.getBoundingClientRect().top + window.scrollY <= threshold) {
+              index = i;
+            }
+          });
+
+          const total = stepIds.length;
+
+          if (index <= 0) {
+            prev.setAttribute("aria-hidden", "true");
+            prev.tabIndex = -1;
+            prev.style.visibility = "hidden";
+          } else {
+            prev.removeAttribute("tabindex");
+            prev.removeAttribute("aria-hidden");
+            prev.style.visibility = "visible";
+            prev.href = "#" + stepIds[index - 1];
+          }
+
+          if (index >= total - 1) {
+            next.setAttribute("aria-hidden", "true");
+            next.style.visibility = "hidden";
+          } else {
+            next.removeAttribute("aria-hidden");
+            next.style.visibility = "visible";
+            next.href = "#" + stepIds[index + 1];
+          }
+        };
+
+        window.addEventListener("scroll", update, { passive: true });
+        update();
+      }
+
+      setupStepNav();
+
+      /* ============================================================
+         Copy buttons
+         ============================================================ */
+      const copyButtons = document.querySelectorAll(".copy-button");
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", async () => {
+          const command = button.getAttribute("data-copy");
+          if (!command) return;
+
+          try {
+            await navigator.clipboard.writeText(command);
+          } catch (error) {
+            const fallback = document.createElement("textarea");
+            fallback.value = command;
+            fallback.style.position = "fixed";
+            fallback.style.opacity = "0";
+            document.body.appendChild(fallback);
+            fallback.select();
+            document.execCommand("copy");
+            fallback.remove();
+          }
+
+          const original = button.textContent;
+          button.textContent = "Copied ✓";
+          setTimeout(() => {
+            button.textContent = original;
+          }, 1600);
+        });
+      });
+    </script>
+  </body>
+</html>
