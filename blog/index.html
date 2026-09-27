@@ -1066,7 +1066,10 @@
           const dateLabel = formatDate(dateValue);
           const categories = getCategories(article);
           const image = getValue(article, BLOG_KEY_GROUPS[5]);
-          const url = getValue(article, BLOG_KEY_GROUPS[6]);
+          const id = getValue(article, BLOG_KEY_GROUPS[0]);
+          const url = id
+            ? "post/index.html?id=" + encodeURIComponent(id)
+            : "";
           const safeUrl = escapeHtml(url);
           const safeImage = escapeHtml(resolveImagePath(image));
 
