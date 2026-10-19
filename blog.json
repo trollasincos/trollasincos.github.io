@@ -28,5 +28,15 @@
     "image": "",
     "status": "Published",
     "content": "<p>📱 Official Whatsapp channel<br>🔗 Join our official Whatsapp channel for more and faster updates.<br><a href=\"https://bit.ly/trollasincwhatsapp\">https://bit.ly/trollasincwhatsapp</a></p>"
+  },
+    {
+    "id": "20261019-001",
+    "title": "🔄️ Change of plans!",
+    "description": "🚀 Our system is based on LineageOS. We were developing our system based on LineageOS 23.2 (Android 16), but a new version of Android has been released in the past few days. Therefore, we're leaving Android 16 behind and starting from scratch with Android 17.",
+    "date": "2026-10-19",
+    "category": "Announcements",
+    "image": "/img/blog/20261019-001.png",
+    "status": "Published",
+    "content": "<p>🚀 Our system is based on LineageOS. We were developing our system based on LineageOS 23.2 (Android 16), but a new version of Android has been released in the past few days. Therefore, we're leaving Android 16 behind and starting from scratch with Android 17.</p>"
   }
 ]
