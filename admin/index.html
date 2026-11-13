@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin — Trollas. Inc. OS</title>
+    <meta
+      name="description"
+      content="Private administration panel for Trollas. Inc. OS." />
+    <meta name="theme-color" content="#0062f4" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Admin data must never be indexed or framed. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://hvhwvzuxswpqokgysetx.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'" />
+
+    <link rel="icon" type="image/png" href="../img/trollasinc.png" />
+    <link rel="apple-touch-icon" href="../img/trollasinc.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="index.css?v=20261113b" />
+    <script src="index.js?v=20261113b" defer></script>
+  </head>
+
+  <body>
+    <!-- ============================================================
+         Boot
+         ============================================================ -->
+    <div id="boot-view" class="boot-view" role="status" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span class="boot-label">Checking your session…</span>
+    </div>
+
+    <!-- ============================================================
+         Authentication
+         ============================================================ -->
+    <section id="auth-view" class="auth-view" hidden>
+      <a href="#auth-main" class="skip-link">Skip to main content</a>
+
+      <nav class="navbar" aria-label="Admin navigation">
+        <a
+          class="navbar-brand"
+          href="../index.html"
+          aria-label="Trollas. Inc. OS — Home">
+          <img
+            class="navbar-logo"
+            src="../img/trollasinc.png"
+            alt="Trollas. Inc. OS logo"
+            width="32"
+            height="32" />
+          <span class="brand-title">Trollas. Inc. OS</span>
+          <span class="navbar-divider" aria-hidden="true">/</span>
+          <span class="navbar-section">Admin</span>
+        </a>
+
+        <a class="navbar-back" href="../index.html">Back to site</a>
+      </nav>
+
+      <main class="auth-main" id="auth-main">
+        <div class="auth-card">
+          <span class="eyebrow">Administration</span>
+          <h1>Admin</h1>
+          <p class="auth-subtitle">
+            Sign in with your Trollas. Inc. administrator account to review
+            device reports.
+          </p>
+
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="username"
+                inputmode="email"
+                spellcheck="false"
+                required />
+            </div>
+
+            <div class="field">
+              <label for="password">Password</label>
+              <div class="password-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  required />
+                <button
+                  class="password-toggle"
+                  id="toggle-password"
+                  type="button"
+                  aria-label="Show password">
+                  Show
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="alert alert-error"
+              id="login-error"
+              role="alert"
+              hidden></div>
+
+            <button
+              class="button auth-submit"
+              id="login-button"
+              type="submit">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="button-label">Sign in</span>
+            </button>
+          </form>
+
+          <p class="auth-note">
+            Access is restricted to authorized administrators. This page uses
+            the public Supabase anon key and Row Level Security.
+          </p>
+        </div>
+      </main>
+
+      <footer class="auth-footer">
+        © 2024–2026 Trollas. Inc. · Internal tool ·
+        <a href="../index.html">trollasincos.github.io</a>
+      </footer>
+    </section>
+
+    <!-- ============================================================
+         Dashboard
+         ============================================================ -->
+    <div id="dashboard-view" class="dashboard-view" hidden>
+      <a href="#main" class="skip-link">Skip to main content</a>
+
+      <nav class="navbar" aria-label="Admin navigation">
+        <a
+          class="navbar-brand"
+          href="../index.html"
+          aria-label="Trollas. Inc. OS — Home">
+          <img
+            class="navbar-logo"
+            src="../img/trollasinc.png"
+            alt="Trollas. Inc. OS logo"
+            width="32"
+            height="32" />
+          <span class="brand-title">Trollas. Inc. OS</span>
+          <span class="navbar-divider" aria-hidden="true">/</span>
+          <span class="navbar-section">Admin</span>
+        </a>
+
+        <div class="navbar-actions">
+          <span class="navbar-user" id="navbar-user"></span>
+
+          <button
+            class="icon-button"
+            id="refresh-button"
+            type="button"
+            title="Refresh admin data"
+            aria-label="Refresh admin data">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M21 12a9 9 0 0 1-15.5 6.4L3 16"></path>
+              <path d="M3 21v-5h5"></path>
+              <path d="M3 12A9 9 0 0 1 18.5 5.6L21 8"></path>
+              <path d="M21 3v5h-5"></path>
+            </svg>
+          </button>
+
+          <button
+            class="button button-small button-ghost"
+            id="logout-button"
+            type="button">
+            Sign out
+          </button>
+        </div>
+      </nav>
+
+      <main id="main" class="admin-main">
+        <div class="page-shell">
+          <header class="page-header">
+            <div>
+              <span class="eyebrow">Trollas. Inc. OS</span>
+              <h1>Admin</h1>
+              <p>
+                Minimal device reports received by the Trollas. Inc. OS admin
+                panel. Newest submissions appear first.
+              </p>
+            </div>
+
+            <div class="page-meta">
+              <span class="live-badge">
+                <span class="live-dot" aria-hidden="true"></span>
+                Auto-refresh 30s
+              </span>
+              <span
+                class="last-updated"
+                id="last-updated"
+                aria-live="polite">
+                Not loaded yet
+              </span>
+            </div>
+          </header>
+
+          <div
+            class="alert alert-error"
+            id="dashboard-error"
+            role="alert"
+            hidden>
+            <span id="dashboard-error-message"></span>
+            <button class="alert-action" id="retry-button" type="button">
+              Retry
+            </button>
+          </div>
+
+          <section
+            class="unauthorized"
+            id="unauthorized-view"
+            aria-labelledby="unauthorized-title"
+            hidden>
+            <h2 id="unauthorized-title">Account not authorized</h2>
+            <p>
+              This account can sign in, but it does not have the
+              <code>admin</code> permission.
+            </p>
+            <p class="muted">
+              Signed in as <strong id="unauthorized-email"></strong>.
+            </p>
+            <div class="unauthorized-actions">
+              <button
+                class="button"
+                id="retry-access-button"
+                type="button">
+                Retry access
+              </button>
+              <button
+                class="button button-secondary"
+                id="unauthorized-logout-button"
+                type="button">
+                Sign out
+              </button>
+            </div>
+          </section>
+
+          <div id="dashboard-content">
+            <section class="stats-grid" aria-label="Admin summary">
+              <article class="stat-card">
+                <span class="stat-label">Total submissions</span>
+                <strong class="stat-value" id="stat-total">—</strong>
+                <span class="stat-note">Reports stored</span>
+              </article>
+
+              <article class="stat-card stat-card-accent">
+                <span class="stat-label">Unique devices</span>
+                <strong class="stat-value" id="stat-devices">—</strong>
+                <span class="stat-note">Each device counted once</span>
+              </article>
+
+              <article class="stat-card">
+                <span class="stat-label">Last report</span>
+                <strong class="stat-value stat-value-small" id="stat-last">
+                  —
+                </strong>
+                <span class="stat-note" id="stat-last-relative">
+                  Waiting for data
+                </span>
+              </article>
+            </section>
+
+            <section class="panel" aria-labelledby="reports-title">
+              <div class="panel-toolbar">
+                <div>
+                  <h2 id="reports-title">Reports</h2>
+                  <p
+                    class="panel-subtitle"
+                    id="reports-summary"
+                    aria-live="polite">
+                    Loading…
+                  </p>
+                </div>
+
+                <div class="panel-actions">
+                  <span class="table-loading" id="table-loading" hidden>
+                    <span class="spinner spinner-dark" aria-hidden="true"></span>
+                    Updating…
+                  </span>
+                  <button
+                    class="button button-small"
+                    id="reload-button"
+                    type="button">
+                    Refresh
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-wrap" id="table-wrap">
+                <table class="data-table" id="reports-table" hidden>
+                  <caption class="sr-only">
+                    Admin submissions, newest first
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Device ID</th>
+                      <th scope="col">Model</th>
+                      <th scope="col">OS</th>
+                      <th scope="col">UI</th>
+                      <th scope="col">Build</th>
+                      <th scope="col">Reported</th>
+                      <th scope="col">Received</th>
+                    </tr>
+                  </thead>
+                  <tbody id="reports-body"></tbody>
+                </table>
+
+                <div
+                  class="table-skeleton"
+                  id="table-skeleton"
+                  aria-hidden="true"
+                  hidden>
+                  <table class="data-table">
+                    <tbody>
+                      <tr class="skeleton-row">
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                      </tr>
+                      <tr class="skeleton-row">
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                      </tr>
+                      <tr class="skeleton-row">
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                      </tr>
+                      <tr class="skeleton-row">
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                      </tr>
+                      <tr class="skeleton-row">
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                      </tr>
+                      <tr class="skeleton-row">
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                        <td><span class="skeleton"></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="empty-state" id="table-empty" hidden>
+                  <strong>No submissions yet</strong>
+                  Devices will appear here after SetupWizard completes and the
+                  first report is received.
+                </div>
+              </div>
+
+              <div class="panel-footer">
+                <span id="page-summary">—</span>
+                <div class="pagination">
+                  <button
+                    class="button button-small button-secondary"
+                    id="prev-page"
+                    type="button">
+                    Previous
+                  </button>
+                  <span id="page-indicator">Page 1 of 1</span>
+                  <button
+                    class="button button-small button-secondary"
+                    id="next-page"
+                    type="button">
+                    Next
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="admin-footer">
+        <div class="footer-inner">
+          <span>© 2024–2026 <strong>Trollas. Inc.</strong> · Admin</span>
+          <a href="../index.html">Back to trollasincos.github.io</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
