@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.trollasinc.os",
+      "sha256_cert_fingerprints": [
+        "65:D4:12:78:E9:9E:BE:8B:B1:65:B6:16:35:32:A7:D9:4A:2A:69:08:AB:C1:B8:28:EC:BD:BF:92:E1:04:D3:92"
+      ]
+    }
+  }
+]
